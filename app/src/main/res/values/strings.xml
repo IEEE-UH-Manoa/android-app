@@ -12,5 +12,18 @@
     <string name="action_settings">Settings</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="About">IEEE (Institute of Electrical and Electronics Engineers, Inc.) is a non-profit,
+        technical professional association of more than 380,000 individual members in 150 countries.
+
+        \n\nPronounced “Eye-triple-E”, IEEE is the largest professional organization in the world. Through its members, the IEEE is a leading authority in technical
+        areas ranging from computer engineering, biomedical technology, electric power, telecommunications, aerospace and consumer electronics.
+
+        \n\nIEEE student branches are established at universities and colleges around the world. Within IEEE, activities are organized geographically
+        by region and local section. The IEEE Student Branch at the University of Hawaii at Manoa is a member of the Central Area Section in
+        Region 6 (Western U.S) of the international IEEE organization.
+
+        \n\nAs a member of IEEE, you will be presented with new resources,
+        valuable assistance, and many discounts that will help you advance your career in the right direction.
+    </string>
 
 </resources>
