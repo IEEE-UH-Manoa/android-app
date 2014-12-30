@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="left"
+        android:orientation="vertical"
+        android:background="@color/IEEE_blue">
+
+        <!-- Date and time -->
+
+        <TextView
+            android:id="@+id/newsFeedMonth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Jan"/>
+
+        <TextView
+            android:id="@+id/newsFeedDayOfMonth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="0dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-light"
+            android:text="31"/>
+
+        <TextView
+            android:id="@+id/newsFeedDayOfWeek"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="0dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Wed"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/layer_card_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/IEEE_blue">
+
+            <!-- Event Information -->
+            <TextView
+                android:id="@+id/newsFeedEventType"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="0dp"
+                android:paddingLeft="7dp"
+                android:paddingTop="5dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Social"/>
+
+            <TextView
+                android:id="@+id/newsFeedEventTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingRight="20dp"
+                android:paddingBottom="0dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:text="This is the event information for an event."/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/newsFeedEventLocation"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="5dp"
+                    android:gravity="left"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textStyle="bold"
+                    android:text="HIG 110"/>
+
+                <TextView
+                    android:id="@+id/newsFeedEventTime"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:gravity="end"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textStyle="bold"
+                    android:text="11:00a-1:00p"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

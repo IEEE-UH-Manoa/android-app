@@ -6,14 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/black">
-    <!--
 
-
-            android:layout_gravity="center_horizontal"
-                                   android:gravity="center"
-            android:background="@drawable/layer_card_background"
-                    android:scaleType="fitXY"
-        -->
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
