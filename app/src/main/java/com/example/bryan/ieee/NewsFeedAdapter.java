@@ -9,12 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DrawerItemCustomAdapter extends ArrayAdapter<ObjectDrawerItem> {
+public class NewsFeedAdapter extends ArrayAdapter<Event> {
 
     Context mContext;
     int layoutResourceId;
-    ObjectDrawerItem data[] = null;
-
+    Event data[] = null;
     /*
      * @mContext - app context
      *
@@ -22,7 +21,7 @@ public class DrawerItemCustomAdapter extends ArrayAdapter<ObjectDrawerItem> {
      *
      * @data - the ListItem data
      */
-    public DrawerItemCustomAdapter(Context mContext, int layoutResourceId, ObjectDrawerItem[] data) {
+    public NewsFeedAdapter(Context mContext, int layoutResourceId, Event[] data) {
 
         super(mContext, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
@@ -31,13 +30,13 @@ public class DrawerItemCustomAdapter extends ArrayAdapter<ObjectDrawerItem> {
     }
 
     /*
-     * @We'll overried the getView method which is called for every ListItem we
-     * have.
-     *
-     * @There are lots of different caching techniques for Android ListView to
-     * achieve better performace especially if you are going to have a very long
-     * ListView.
-     */
+ * @We'll overried the getView method which is called for every ListItem we
+ * have.
+ *
+ * @There are lots of different caching techniques for Android ListView to
+ * achieve better performace especially if you are going to have a very long
+ * ListView.
+ */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -48,22 +47,18 @@ public class DrawerItemCustomAdapter extends ArrayAdapter<ObjectDrawerItem> {
         listItem = inflater.inflate(layoutResourceId, parent, false);
 
         // get the elements in the layout
-
+/*
         ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.imageViewIcon);
         TextView textViewName = (TextView) listItem.findViewById(R.id.textViewName);
-
 
 		/*
 		 * Set the data for the list item. You can also set tags here if you
 		 * want.
 		 */
-        ObjectDrawerItem folder = data[position];
+  //      Event folder = data[position];
 
-
-        imageViewIcon.setImageResource(folder.icon);
-        textViewName.setText(folder.name);
+    //    textViewName.setText(folder.name);
 
         return listItem;
     }
-
 }

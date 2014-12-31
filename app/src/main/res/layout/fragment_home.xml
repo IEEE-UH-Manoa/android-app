@@ -7,15 +7,21 @@
     android:background="@color/black">
 
     <TextView
+        android:id="@+id/newsFeedTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:paddingRight="10dp"
-        android:paddingBottom="0dp"
-        android:paddingLeft="10dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:textStyle="bold"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-condensed"
-        android:text="News Feed"/>
+        android:background="#CABBBBBB"
+        android:text="@string/news_feed_title"/>
+
+    <ListView
+        android:id="@+id/newsFeedList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
 
 </LinearLayout>
