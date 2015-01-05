@@ -40,22 +40,12 @@ public class HomeFragment extends Fragment {
     private static final String TAG_TYPE = "type";
     private static final String TAG_DESCRIPTION = "description";
 
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private String[] mDrawerTitles;
-
-    private ActionBarDrawerToggle mDrawerToggle;
-
-    private CharSequence mDrawerTitle;
-    private CharSequence mAppTitle;
-
     private ProgressDialog pDialog;
 
     // contacts JSONArray
     JSONArray events = null;
 
     private ArrayList<Event> eventList;
-    private ArrayList<HashMap<String, String>> allEvents;
 
     public HomeFragment() {
     }
