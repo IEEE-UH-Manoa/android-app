@@ -17,4 +17,5 @@
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
     <color name="IEEE_blue">#006699</color>
+    <color name="IEEE_silver">#CABBBBBB</color>
 </resources>

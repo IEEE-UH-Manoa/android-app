@@ -3,6 +3,7 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="55dp"
         android:layout_height="wrap_content"
@@ -10,9 +11,9 @@
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:gravity="left"
+        android:gravity="end"
         android:orientation="vertical"
-        android:background="@color/IEEE_blue">
+        android:background="@color/white">
 
         <!-- Date and time -->
 
@@ -26,8 +27,9 @@
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:textStyle="bold"
+            android:textColor="@color/IEEE_blue"
             android:fontFamily="sans-serif-condensed"
-            android:text="Jan"/>
+            android:text="JAN"/>
 
         <TextView
             android:id="@+id/newsFeedDayOfMonth"
@@ -38,8 +40,9 @@
             android:paddingBottom="0dp"
             android:paddingLeft="10dp"
             android:paddingTop="0dp"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:fontFamily="sans-serif-light"
             android:text="31"/>
 
@@ -53,19 +56,21 @@
             android:paddingLeft="10dp"
             android:paddingTop="0dp"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-light"
             android:text="Wed"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:gravity="center"
+        android:gravity="start"
         android:orientation="vertical"
         android:background="@drawable/layer_card_background">
 
@@ -133,7 +138,6 @@
 
         </LinearLayout>
     </LinearLayout>
-
 
 
 </LinearLayout>

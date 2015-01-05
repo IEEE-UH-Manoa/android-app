@@ -3,6 +3,8 @@ package com.example.bryan.ieee;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -14,13 +16,34 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class MainActivity extends Activity {
+
 
     private static final int NUMITEMS = 3;
     private static final int HOME = 0;
     private static final int CALENDAR = 1;
     private static final int ABOUT = 2;
+
+    // URL to get contacts JSON
+    private static String url = "http://api.ieeeatuhm.com/events";
+
+    // JSON Node names
+    private static final String TAG_EVENTS = "events";
+    private static final String TAG_EVENTNAME = "eventname";
+    private static final String TAG_DATE = "date";
+    private static final String TAG_STARTTIME = "starttime";
+    private static final String TAG_ENDTIME = "endtime";
+    private static final String TAG_LOCATION = "location";
+    private static final String TAG_TYPE = "type";
+    private static final String TAG_DESCRIPTION = "description";
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -30,6 +53,14 @@ public class MainActivity extends Activity {
 
     private CharSequence mDrawerTitle;
     private CharSequence mAppTitle;
+
+    private ProgressDialog pDialog;
+
+    // contacts JSONArray
+    JSONArray events = null;
+
+    private ArrayList<Event> eventList;
+    private ArrayList<HashMap<String, String>> allEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +107,7 @@ public class MainActivity extends Activity {
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-        //        getActionBar().setTitle(mDrawerTitle);
+                //        getActionBar().setTitle(mDrawerTitle);
             }
         };
 
@@ -134,12 +165,14 @@ public class MainActivity extends Activity {
     private void selectItem(int position) {
 
         // update the main content by replacing fragments
-
         Fragment fragment = null;
+        Bundle args = new Bundle();
+        args.putParcelableArrayList(TAG_EVENTS, eventList);
 
         switch (position) {
             case HOME:
                 fragment = new HomeFragment();
+                fragment.setArguments(args);
                 break;
             case CALENDAR:
                 fragment = new CalendarFragment();
@@ -160,7 +193,7 @@ public class MainActivity extends Activity {
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
 
-            if(position == HOME)
+            if (position == HOME)
                 setTitle("IEEE");
             else
                 setTitle(mDrawerTitles[position]);
@@ -178,4 +211,6 @@ public class MainActivity extends Activity {
         mAppTitle = title;
         getActionBar().setTitle(mAppTitle);
     }
+
+
 }
