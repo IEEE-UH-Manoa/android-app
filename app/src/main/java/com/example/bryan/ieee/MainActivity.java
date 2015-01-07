@@ -37,13 +37,6 @@ public class MainActivity extends Activity {
 
     // JSON Node names
     private static final String TAG_EVENTS = "events";
-    private static final String TAG_EVENTNAME = "eventname";
-    private static final String TAG_DATE = "date";
-    private static final String TAG_STARTTIME = "starttime";
-    private static final String TAG_ENDTIME = "endtime";
-    private static final String TAG_LOCATION = "location";
-    private static final String TAG_TYPE = "type";
-    private static final String TAG_DESCRIPTION = "description";
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -107,7 +100,6 @@ public class MainActivity extends Activity {
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                //        getActionBar().setTitle(mDrawerTitle);
             }
         };
 

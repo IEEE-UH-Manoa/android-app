@@ -1,0 +1,163 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.bryan.ieee.EventActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="end"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <!-- Date and time -->
+
+            <TextView
+                android:id="@+id/eventMonth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingRight="10dp"
+                android:paddingBottom="0dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/IEEE_blue"
+                android:fontFamily="sans-serif-condensed"
+                android:text="JAN"/>
+
+            <TextView
+                android:id="@+id/eventDayOfMonth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingRight="10dp"
+                android:paddingBottom="0dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="0dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-light"
+                android:text="31"/>
+
+            <TextView
+                android:id="@+id/eventDayOfWeek"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="0dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-light"
+                android:text="Wed"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/eventTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="70dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:background="@color/IEEE_blue"
+            android:textStyle="bold"
+            android:textSize="21sp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="Event title"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/IEEE_blue"
+        android:orientation="horizontal">
+
+        <!-- Event Information -->
+        <TextView
+            android:id="@+id/eventType"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingBottom="0dp"
+            android:paddingLeft="7dp"
+            android:paddingTop="5dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Social"/>
+
+        <TextView
+            android:id="@+id/eventLocation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="7dp"
+            android:paddingTop="5dp"
+            android:gravity="center_horizontal"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:text="HIG 110"/>
+
+        <TextView
+            android:id="@+id/eventTime"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="7dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:gravity="end"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:text="11:00a-1:00p"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/eventDescription"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/IEEE_blue"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:text="Description of event"/>
+
+</LinearLayout>

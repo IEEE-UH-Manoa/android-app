@@ -100,6 +100,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:textStyle="bold"
                 android:paddingRight="20dp"
                 android:paddingBottom="0dp"
                 android:paddingLeft="7dp"

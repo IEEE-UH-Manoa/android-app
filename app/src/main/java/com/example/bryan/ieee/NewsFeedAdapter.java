@@ -18,14 +18,16 @@ public class NewsFeedAdapter extends ArrayAdapter<Event> {
     private int layoutResourceId;
     private ArrayList<Event> eventList;
 
-        // elements in the news feed
-        private TextView nfDayOfWeek;
-        private TextView nfDayOfMonth;
-        private TextView nfMonth;
-        private TextView nfEventType;
-        private TextView nfEventTitle;
-        private TextView nfEventLocation;
-        private TextView nfEventTime;
+    private Event e;
+
+    // elements in the news feed
+    private TextView nfDayOfWeek;
+    private TextView nfDayOfMonth;
+    private TextView nfMonth;
+    private TextView nfEventType;
+    private TextView nfEventTitle;
+    private TextView nfEventLocation;
+    private TextView nfEventTime;
 
     /*
      * @mContext - app context
@@ -75,59 +77,23 @@ public class NewsFeedAdapter extends ArrayAdapter<Event> {
 		/*
 		 * Set the data for the list item.
 		 */
-        Event e = eventList.get(position);
+        e = eventList.get(position);
 
-        nfDayOfMonth.setText(dayToString(e.getDay()));
-        nfDayOfWeek.setText(e.getDayOfWeek());
-        nfMonth.setText(monthToString(e.getMonth()));
-        nfEventLocation.setText(locationToString(e.getLocation()));
-        nfEventTime.setText(setEventTime(e));
-        nfEventTitle.setText(e.getName());
-        nfEventType.setText(e.getType());
+        setTextViews();
 
         return listItem;
     }
 
-    private String setEventTime(Event e) {
-        if(e.getStartTime().equals(""))
-            return "TBD";
+    private void setTextViews() {
 
-        String eventTime = e.getStartTime() + " - " + e.getEndTime();
+        nfDayOfMonth.setText(e.dayToString());
+        nfDayOfWeek.setText(e.getDayOfWeek());
+        nfMonth.setText(e.monthToString());
+        nfEventLocation.setText(e.locationToString());
+        nfEventTime.setText(e.setEventTime());
+        nfEventTitle.setText(e.getName());
+        nfEventType.setText(e.getType());
 
-        return eventTime;
     }
 
-    private String monthToString(int month) {
-        switch(month) {
-            case 1: return "JAN";
-            case 2: return "FEB";
-            case 3: return "MAR";
-            case 4: return "APR";
-            case 5: return "MAY";
-            case 6: return "JUN";
-            case 7: return "JUL";
-            case 8: return "AUG";
-            case 9: return "SEP";
-            case 10: return "OCT";
-            case 11: return "NOV";
-            case 12: return "DEC";
-            default: return "TBD";
-        }
-    }
-
-    private String dayToString(int day) {
-        if(day == 0)
-            return "";
-
-        else
-            return String.valueOf(day);
-    }
-
-    private String locationToString(String location) {
-        if(location.equals(""))
-            return "TBD";
-
-        else
-            return location;
-    }
 }

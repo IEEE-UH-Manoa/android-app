@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name = "titles_array">
+    <string-array name="titles_array">
         <item>Home</item>
         <item>Calendar</item>
         <item>About</item>
@@ -24,7 +24,7 @@
         Region 6 (Western U.S) of the international IEEE organization.
 
         \n\nAs a member of IEEE, you will be presented with new resources,
-        valuable assistance, and many discounts that will help you advance your career in the right direction.
-    </string>
+        valuable assistance, and many discounts that will help you advance your career in the right direction.</string>
+    <string name="title_activity_event">EventActivity</string>
 
 </resources>

@@ -75,7 +75,7 @@ public class Event implements Parcelable {
     }
 
     public String getDescription() {
-        return description;
+        return "Description:\n\n" + description;
     }
 
     /**
@@ -92,6 +92,10 @@ public class Event implements Parcelable {
         endTime = source.readString();
         location = source.readString();
         type = source.readString();
+        description = source.readString();
+        month = source.readInt();
+        day = source.readInt();
+        dayOfWeek = source.readString();
     }
 
     @Override
@@ -107,7 +111,21 @@ public class Event implements Parcelable {
         dest.writeString(endTime);
         dest.writeString(location);
         dest.writeString(type);
+        dest.writeString(description);
+        dest.writeInt(month);
+        dest.writeInt(day);
+        dest.writeString(dayOfWeek);
     }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Event createFromParcel(Parcel in) {
+            return new Event(in);
+        }
+
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
 
     // set month, day, year, and day of the week
     private void setDate(String date) {
@@ -162,6 +180,49 @@ public class Event implements Parcelable {
             default:
                 dayOfWeek = "";
         }
+    }
+
+    public String setEventTime() {
+        if(startTime.equals(""))
+            return "Time: TBD";
+
+        String eventTime = startTime + " - " + endTime;
+
+        return eventTime;
+    }
+
+    public String monthToString() {
+        switch(month) {
+            case 1: return "JAN";
+            case 2: return "FEB";
+            case 3: return "MAR";
+            case 4: return "APR";
+            case 5: return "MAY";
+            case 6: return "JUN";
+            case 7: return "JUL";
+            case 8: return "AUG";
+            case 9: return "SEP";
+            case 10: return "OCT";
+            case 11: return "NOV";
+            case 12: return "DEC";
+            default: return "TBD";
+        }
+    }
+
+    public String dayToString() {
+        if(day == 0)
+            return "";
+
+        else
+            return String.valueOf(day);
+    }
+
+    public String locationToString() {
+        if(location.equals("") || location.equals("TBD"))
+            return "Location: TBD";
+
+        else
+            return location;
     }
 
 }

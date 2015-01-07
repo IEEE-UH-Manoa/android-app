@@ -3,6 +3,7 @@ package com.example.bryan.ieee;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -11,8 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -143,6 +146,18 @@ public class HomeFragment extends Fragment {
             // set ArrayAdapter for the ListView adapter
             NewsFeedAdapter adapter = new NewsFeedAdapter(getActivity(), R.layout.news_feed_card, eventList);
             newsFeedList.setAdapter(adapter);
+            newsFeedList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Event e = (Event) parent.getAdapter().getItem(position);
+
+                    Activity currActivity = getActivity();
+                    Intent intent = new Intent(currActivity, EventActivity.class);
+                    intent.putExtra("event", e);
+                    currActivity.startActivity(intent);
+
+                }
+            });
 
         }
 
