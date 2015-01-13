@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,10 +46,19 @@ public class HomeFragment extends Fragment {
 
     private ProgressDialog pDialog;
 
-    // contacts JSONArray
     JSONArray events = null;
 
     private ArrayList<Event> eventList;
+
+    private NewsFeedAdapter adapter;
+
+    private int firstEvent = 0; // first event to load
+    private int lastEvent = NUMEVENTS; // last event displayed on news feed
+
+    private int preLast = 0;
+    private boolean firstLoad = true;
+
+
 
     public HomeFragment() {
     }
@@ -59,10 +69,7 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         newsFeedList = (ListView) rootView.findViewById(R.id.newsFeedList);
 
-        Event[] events = new Event[NUMEVENTS];
-
-        Bundle args = this.getArguments();
-        eventList = args.getParcelableArrayList("events");
+        eventList = new ArrayList<>();
 
         // Calling async task to get json
         GetEvents getEvents = new GetEvents();
@@ -97,34 +104,42 @@ public class HomeFragment extends Fragment {
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
 
-            Log.d("Response: ", "> " + jsonStr);
-
             if (jsonStr != null) {
                 try {
 
-                    eventList = new ArrayList<Event>();
                     events = new JSONArray(jsonStr);
 
-                    // looping through All Contacts
-                    for (int i = 0; i < events.length(); i++) {
-                        JSONObject e = events.getJSONObject(i);
 
-                        String name = e.getString(TAG_EVENTNAME);
-                        String date = e.getString(TAG_DATE);
-                        String startTime = e.getString(TAG_STARTTIME);
-                        String endTime = e.getString(TAG_ENDTIME);
-                        String location = e.getString(TAG_LOCATION);
-                        String type = e.getString(TAG_TYPE);
-                        String description = e.getString(TAG_DESCRIPTION);
+                    if(firstEvent == lastEvent)
+                        getActivity().runOnUiThread((new Runnable() {
+                            public void run() {
+                                Toast.makeText(getActivity(), "No events left to display", Toast.LENGTH_SHORT).show();
+                            }
+                        }));
 
-                        Log.d("events", name);
+                    else {
+                        // looping through All Contacts
+                        for (int i = firstEvent; i < lastEvent; i++) {
+                            JSONObject e = events.getJSONObject(i);
 
-                        // create new event
-                        Event event = new Event(name, date, startTime, endTime, location, type, description);
+                            String name = e.getString(TAG_EVENTNAME);
+                            String date = e.getString(TAG_DATE);
+                            String startTime = e.getString(TAG_STARTTIME);
+                            String endTime = e.getString(TAG_ENDTIME);
+                            String location = e.getString(TAG_LOCATION);
+                            String type = e.getString(TAG_TYPE);
+                            String description = e.getString(TAG_DESCRIPTION);
 
-                        // adding event to event list
-                        eventList.add(event);
+                            // create new event
+                            Event event = new Event(name, date, startTime, endTime, location, type, description);
+
+                            // adding event to event list
+                            eventList.add(event);
+                        }
                     }
+
+                    updateLastEvent();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -143,27 +158,69 @@ public class HomeFragment extends Fragment {
                      pDialog.dismiss();
 
 
-            // set ArrayAdapter for the ListView adapter
-            NewsFeedAdapter adapter = new NewsFeedAdapter(getActivity(), R.layout.news_feed_card, eventList);
-            newsFeedList.setAdapter(adapter);
-            newsFeedList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Event e = (Event) parent.getAdapter().getItem(position);
+            if(firstLoad) {
+                // set ArrayAdapter for the ListView adapter
+                adapter = new NewsFeedAdapter(getActivity(), R.layout.news_feed_card, eventList);
+                newsFeedList.setAdapter(adapter);
 
-                    Activity currActivity = getActivity();
-                    Intent intent = new Intent(currActivity, EventActivity.class);
-                    intent.putExtra("event", e);
-                    currActivity.startActivity(intent);
+                AbsListView.OnScrollListener l = new AbsListView.OnScrollListener() {
+                    @Override
+                    public void onScrollStateChanged(AbsListView view, int scrollState) {
 
-                }
-            });
+                    }
 
+                    @Override
+                    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+                        if(view.getId() == R.id.newsFeedList) {
+
+                            int lastItem = firstVisibleItem + visibleItemCount;
+
+                            if(lastItem == totalItemCount) {
+                                if(preLast != lastItem) { // to avoid multiple calls for last item
+
+                                    GetEvents getEvents = new GetEvents();
+                                    getEvents.execute();
+
+                                    preLast = lastItem;
+                                }
+                            }
+                        }
+                    }
+                };
+
+                newsFeedList.setOnScrollListener(l);
+                newsFeedList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Event e = (Event) parent.getAdapter().getItem(position);
+
+                        Activity currActivity = getActivity();
+                        Intent intent = new Intent(currActivity, EventActivity.class);
+                        intent.putExtra("event", e);
+                        currActivity.startActivity(intent);
+                    }
+                });
+
+                firstLoad = false;
+            }
+
+            adapter.notifyDataSetChanged();
         }
 
     }
 
+    private void updateLastEvent() {
 
+        firstEvent = lastEvent;
+
+        if(lastEvent + NUMEVENTS > events.length())
+            lastEvent = events.length();
+
+        else
+            lastEvent += NUMEVENTS;
+
+    }
 
 }
 

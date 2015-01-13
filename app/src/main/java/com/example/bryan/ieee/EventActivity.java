@@ -81,7 +81,7 @@ public class EventActivity extends Activity {
         eDayOfWeek.setText(e.getDayOfWeek());
         eTitle.setText(e.getName());
         eType.setText(e.getType());
-        eLocation.setText(e.getLocation());
+        eLocation.setText(e.locationToString());
         eTime.setText(e.setEventTime());
         eDesc.setText(e.getDescription());
 
