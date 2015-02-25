@@ -3,13 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/txtLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Calendar View"
-        android:textSize="16dp" />
+    <CalendarView
+        android:id="@+id/calendar"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
+<!--
+    <TextView
+        android:id="@+id/calendarDateTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-condensed"
+        android:background="@color/IEEE_blue"
+        android:text="@string/news_feed_title"/>
+
+     <TextView
+        android:id="@id+/calendarDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      />
+
+!-->
 
 </RelativeLayout>
