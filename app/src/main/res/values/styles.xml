@@ -1,0 +1,28 @@
+<resources>
+    <style name="IEEETheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/IEEEActionBar</item>
+        <item name="android:textViewStyle">@style/IEEE_textViewStyle</item>
+    </style>
+
+    <!-- Color and text style of ActionBar -->
+    <style name="IEEEActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/IEEE_blue</item>
+        <item name="android:titleTextStyle">@style/IEEE_titleTextStyle</item>
+    </style>
+
+    <!-- Font color and font type for all TextViews -->
+    <style name="IEEE_textViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle"></item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Font color and font type for ActionBar -->
+    <style name="IEEE_titleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+</resources>
